@@ -1,0 +1,12 @@
+date,day,meal,customers,food_prepared_kg,food_served_kg,food_waste_kg,menu_type,special_event,temperature_c,rainfall_mm
+2026-08-01,Saturday,Lunch,120,35,30,5
+2026-08-01,Saturday,Dinner,100,30,27,3
+2026-08-02,Sunday,Lunch,140,40,35,5
+2026-08-02,Sunday,Dinner,110,32,29,3
+2026-08-03,Monday,Lunch,90,28,25,3
+2026-08-03,Monday,Dinner,85,26,23,3
+2026-08-04,Tuesday,Lunch,100,30,27,3
+2026-08-04,Tuesday,Dinner,95,29,25,4
+2026-08-01,Saturday,Lunch,100,25,22,3,South Indian,0,31,0
+2026-08-01,Saturday,Dinner,110,28,25,3,North Indian,0,30,0
+
