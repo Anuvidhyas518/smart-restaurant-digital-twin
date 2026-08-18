@@ -1,3 +1,4 @@
+
 # Smart Restaurant Digital Twin
 
 A machine-learning-based digital twin system for predicting and reducing food waste in restaurants.
@@ -29,3 +30,4 @@ SMART_RESTAURANT_DIGITAL_TWIN/
 ├── README.md
 ├── requirements.txt
 └── .gitignore
+
