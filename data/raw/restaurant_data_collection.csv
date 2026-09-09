@@ -1,22 +1,152 @@
-date,day,meal,customers,food_prepared_kg,food_served_kg,food_waste_kg,menu_type,special_event,temperature_c,rainfall_mm,waste_category
-2026-08-01,Saturday,Lunch,120,35.0,30.0,5.0,South Indian,No,31.0,0.0,Vegetable/Fruit Waste
-2026-08-01,Saturday,Dinner,100,30.0,27.0,3.0,North Indian,No,30.0,0.0,Cooked Food Waste
-2026-08-02,Sunday,Lunch,140,40.0,35.0,5.0,South Indian,Yes,32.0,2.0,Vegetable/Fruit Waste
-2026-08-02,Sunday,Dinner,110,32.0,29.0,3.0,North Indian,Yes,31.0,1.0,Cooked Food Waste
-2026-08-03,Monday,Lunch,90,28.0,25.0,3.0,South Indian,No,30.0,0.0,Vegetable/Fruit Waste
-2026-08-03,Monday,Dinner,85,26.0,23.0,3.0,North Indian,No,29.0,0.0,Cooked Food Waste
-2026-08-04,Tuesday,Lunch,100,30.0,27.0,3.0,South Indian,No,31.0,0.0,Vegetable/Fruit Waste
-2026-08-04,Tuesday,Dinner,95,29.0,25.0,4.0,North Indian,No,30.0,3.0,Cooked Food Waste
-2026-08-05,Wednesday,Lunch,115,34.0,30.0,4.0,South Indian,No,32.0,0.0,Vegetable/Fruit Waste
-2026-08-05,Wednesday,Dinner,105,31.0,28.0,3.0,North Indian,No,31.0,0.0,Cooked Food Waste
-2026-08-06,Thursday,Lunch,125,37.0,32.0,5.0,South Indian,No,33.0,4.0,Vegetable/Fruit Waste
-2026-08-06,Thursday,Dinner,110,33.0,29.0,4.0,North Indian,No,32.0,2.0,Cooked Food Waste
-2026-08-07,Friday,Lunch,135,40.0,34.0,6.0,South Indian,Yes,33.0,0.0,Vegetable/Fruit Waste
-2026-08-07,Friday,Dinner,120,35.0,30.0,5.0,North Indian,Yes,32.0,0.0,Cooked Food Waste
-2026-08-08,Saturday,Lunch,145,42.0,36.0,6.0,South Indian,Yes,34.0,5.0,Vegetable/Fruit Waste
-2026-08-08,Saturday,Dinner,125,36.0,31.0,5.0,North Indian,Yes,33.0,3.0,Cooked Food Waste
-2026-08-09,Sunday,Lunch,150,44.0,38.0,6.0,South Indian,Yes,34.0,2.0,Vegetable/Fruit Waste
-2026-08-09,Sunday,Dinner,130,38.0,33.0,5.0,North Indian,Yes,33.0,1.0,Cooked Food Waste
-2026-08-10,Monday,Lunch,95,29.0,26.0,3.0,South Indian,No,31.0,0.0,Vegetable/Fruit Waste
-2026-08-10,Monday,Dinner,90,27.0,24.0,3.0,North Indian,No,30.0,0.0,Cooked Food Waste
-2026-08-16,Sunday,Lunch,100,25.0,22.0,3.0,South Indian,No,30.0,0.0,Edible Surplus
+day,hotel_name,food_prepared_kg,food_waste_kg
+1,Vel Hotel ,8,2
+2,Vel Hotel ,8,3.5
+3,Vel Hotel ,8,1
+4,Vel Hotel ,10,2
+5,Vel Hotel ,15,3
+6,Vel Hotel ,10,3
+7,Vel Hotel ,9,3
+8,Vel Hotel ,9,2
+9,Vel Hotel ,10,2.5
+10,Vel Hotel ,12,2.5
+11,Vel Hotel ,12,4
+12,Vel Hotel ,12,3
+13,Vel Hotel ,8,2
+14,Vel Hotel ,8,4
+15,Vel Hotel ,8,2
+1,Raj Hotel,6,2
+2,Raj Hotel,8,2.5
+3,Raj Hotel,8,1
+4,Raj Hotel,15,4
+5,Raj Hotel,15,3
+6,Raj Hotel,10,3
+7,Raj Hotel,9,3
+8,Raj Hotel,9,2
+9,Raj Hotel,10,2.5
+10,Raj Hotel,12,2.5
+11,Raj Hotel,12,4
+12,Raj Hotel,12,3
+13,Raj Hotel,8,2
+14,Raj Hotel,8,4
+15,Raj Hotel,8,2
+1,Hotel Durbar,28,8
+2,Hotel Durbar,28,8
+3,Hotel Durbar,25,8
+4,Hotel Durbar,35,12
+5,Hotel Durbar,35,10
+6,Hotel Durbar,28,9
+7,Hotel Durbar,25,5
+8,Hotel Durbar,25,7
+9,Hotel Durbar,30,9
+10,Hotel Durbar,32,10
+11,Hotel Durbar,34,11
+12,Hotel Durbar,34,10
+13,Hotel Durbar,25,6
+14,Hotel Durbar,25,4.5
+15,Hotel Durbar,25,4
+1,Ragha Hotel,25,5
+2,Ragha Hotel,25,5
+3,Ragha Hotel,25,5
+4,Ragha Hotel,35,8
+5,Ragha Hotel,42,13
+6,Ragha Hotel,30,8
+7,Ragha Hotel,30,5
+8,Ragha Hotel,30,9
+9,Ragha Hotel,32,9
+10,Ragha Hotel,35,9
+11,Ragha Hotel,38,10
+12,Ragha Hotel,35,13
+13,Ragha Hotel,30,13
+14,Ragha Hotel,30,10
+15,Ragha Hotel,35,12
+1,Madurai Kari Dhasai,25,12
+2,Madurai Kari Dhasai,25,12
+3,Madurai Kari Dhasai,25,12
+4,Madurai Kari Dhasai,30,6
+5,Madurai Kari Dhasai,45,10
+6,Madurai Kari Dhasai,30,8
+7,Madurai Kari Dhasai,35,11
+8,Madurai Kari Dhasai,35,8.5
+9,Madurai Kari Dhasai,32,8
+10,Madurai Kari Dhasai,35,9
+11,Madurai Kari Dhasai,38,9
+12,Madurai Kari Dhasai,38,14
+13,Madurai Kari Dhasai,38,12
+14,Madurai Kari Dhasai,38,15
+15,Madurai Kari Dhasai,38,17
+1,Bhai Biriyani,32,5
+2,Bhai Biriyani,29,4
+3,Bhai Biriyani,35,6
+4,Bhai Biriyani,31,5
+5,Bhai Biriyani,37,7
+6,Bhai Biriyani,28,4
+7,Bhai Biriyani,40,8
+8,Bhai Biriyani,33,5
+9,Bhai Biriyani,30,5
+10,Bhai Biriyani,38,7
+11,Bhai Biriyani,29,4
+12,Bhai Biriyani,36,6
+13,Bhai Biriyani,39,7
+14,Bhai Biriyani,42,9
+15,Bhai Briyani,40,8
+1,Punjabi Daba,52,9
+2,Punjabi Daba,48,7
+3,Punjabi Daba,56,10
+4,Punjabi Daba,50,8
+5,Punjabi Daba,61,12
+6,Punjabi Daba,46,7
+7,Punjabi Daba,64,13
+8,Punjabi Daba,54,9
+9,Punjabi Daba,49,8
+10,Punjabi Daba,60,11
+11,Punjabi Daba,47,7
+12,Punjabi Daba,57,10
+13,Punjabi Daba,62,12
+14,Punjabi Daba,66,14
+15,Punjabi Daba,61,10
+1,Suriya's Restaurant,38,6
+2,Suriya's Restaurant,35,5
+3,Suriya's Restaurant,41,7
+4,Suriya's Restaurant,37,5
+5,Suriya's Restaurant,43,7
+6,Suriya's Restaurant,34,5
+7,Suriya's Restaurant,46,8
+8,Suriya's Restaurant,39,6
+9,Suriya's Restaurant,36,5
+10,Suriya's Restaurant,44,8
+11,Suriya's Restaurant,35,5
+12,Suriya's Restaurant,42,7
+13,Suriya's Restaurant,45,8
+14,Suriya's Restaurant,48,9
+15,Suriya's Restaurant,45,5
+1,Orange Hut,25,3
+2,Orange Hut,23,3
+3,Orange Hut,27,4
+4,Orange Hut,24,3
+5,Orange Hut,29,5
+6,Orange Hut,22,3
+7,Orange Hut,31,5
+8,Orange Hut,26,4
+9,Orange Hut,24,3
+10,Orange Hut,30,5
+11,Orange Hut,23,3
+12,Orange Hut,28,4
+13,Orange Hut,30,5
+14,Orange Hut,33,6
+15,Orange Hut,31,4
+1,Chillis Restaurant,55,10
+2,Chillis Restaurant,51,8
+3,Chillis Restaurant,60,11
+4,Chillis Restaurant,54,9
+5,Chillis Restaurant,65,13
+6,Chillis Restaurant,49,8
+7,Chillis Restaurant,68,14
+8,Chillis Restaurant,58,10
+9,Chillis Restaurant,52,9
+10,Chillis Restaurant,63,12
+11,Chillis Restaurant,50,8
+12,Chillis Restaurant,61,11
+13,Chillis Restaurant,66,13
+14,Chillis Restaurant,71,15
+15,Chillis Restaurant,70,13
+

@@ -1,122 +1,121 @@
-import pandas as pd
-import joblib
-import os
 
-from sklearn.model_selection import train_test_split
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder
+import pandas as pd
+import numpy as np
+import os
+import joblib
+
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
 # ==========================================
-# 1. LOAD DATA
+# LOAD PROCESSED DATA
 # ==========================================
 
-file_path = "data/processed/restaurant_waste_processed.csv"
+data_file = "data/processed/restaurant_waste_processed.csv"
 
-df = pd.read_csv(file_path)
+df = pd.read_csv(data_file)
 
-print("Dataset loaded successfully!")
+print("Processed data loaded successfully.")
 print("Dataset shape:", df.shape)
 
 
 # ==========================================
-# 2. SELECT FEATURES
+# CHECK REQUIRED COLUMNS
 # ==========================================
 
-features = [
-    "customers",
-    "day_of_week",
-    "meal",
-    "menu_type",
-    "special_event",
-    "temperature_c",
-    "rainfall_mm"
+required_columns = [
+    "day",
+    "hotel_name",
+    "food_prepared_kg",
+    "food_wasted_kg"
 ]
 
-target = "food_waste_kg"
-
-X = df[features]
-y = df[target]
-
-
-# ==========================================
-# 3. FEATURE TYPES
-# ==========================================
-
-categorical_features = [
-    "meal",
-    "menu_type",
-    "special_event"
+missing_columns = [
+    column
+    for column in required_columns
+    if column not in df.columns
 ]
 
-numeric_features = [
-    "customers",
-    "day_of_week",
-    "temperature_c",
-    "rainfall_mm"
-]
+if missing_columns:
+    raise ValueError(
+        f"Missing columns: {missing_columns}"
+    )
 
 
 # ==========================================
-# 4. PREPROCESSING
+# CONVERT HOTEL NAME TO NUMERIC
 # ==========================================
 
-preprocessor = ColumnTransformer(
-    transformers=[
-        (
-            "categorical",
-            OneHotEncoder(handle_unknown="ignore"),
-            categorical_features
-        ),
-        (
-            "numeric",
-            "passthrough",
-            numeric_features
-        )
-    ]
+df["hotel_code"] = (
+    df["hotel_name"]
+    .astype("category")
+    .cat.codes
 )
 
 
 # ==========================================
-# 5. MODEL PIPELINE
+# FEATURES
 # ==========================================
 
-model = Pipeline(
-    steps=[
-        ("preprocessor", preprocessor),
-        (
-            "regressor",
-            RandomForestRegressor(
-                n_estimators=100,
-                max_depth=5,
-                random_state=42
-            )
-        )
+X = df[
+    [
+        "day",
+        "hotel_code",
+        "food_prepared_kg"
     ]
-)
+]
 
 
 # ==========================================
-# 6. TRAIN / TEST SPLIT
+# TARGET
+# ==========================================
+
+y = df["food_wasted_kg"]
+
+
+# ==========================================
+# CHECK DATASET SIZE
+# ==========================================
+
+if len(df) < 10:
+    print()
+    print(
+        "WARNING: Only",
+        len(df),
+        "records are available."
+    )
+    print(
+        "More data is recommended for reliable "
+        "AI prediction."
+    )
+
+
+# ==========================================
+# TRAIN / TEST SPLIT
 # ==========================================
 
 X_train, X_test, y_train, y_test = train_test_split(
     X,
     y,
-    test_size=0.20,
+    test_size=0.2,
     random_state=42
 )
 
-print()
-print("Training samples:", len(X_train))
-print("Testing samples:", len(X_test))
+
+# ==========================================
+# RANDOM FOREST MODEL
+# ==========================================
+
+model = RandomForestRegressor(
+    n_estimators=100,
+    random_state=42
+)
 
 
 # ==========================================
-# 7. TRAIN MODEL
+# TRAIN MODEL
 # ==========================================
 
 model.fit(
@@ -124,29 +123,16 @@ model.fit(
     y_train
 )
 
-print()
-print("Model training completed!")
+
+# ==========================================
+# PREDICTION
+# ==========================================
+
+y_pred = model.predict(X_test)
 
 
 # ==========================================
-# 8. PREDICTION
-# ==========================================
-
-y_pred = model.predict(
-    X_test
-)
-
-print()
-print("Actual waste:")
-print(y_test.values)
-
-print()
-print("Predicted waste:")
-print(y_pred.round(2))
-
-
-# ==========================================
-# 9. EVALUATION
+# MODEL METRICS
 # ==========================================
 
 mae = mean_absolute_error(
@@ -159,24 +145,54 @@ mse = mean_squared_error(
     y_pred
 )
 
-rmse = mse ** 0.5
+rmse = np.sqrt(mse)
 
 r2 = r2_score(
     y_test,
     y_pred
 )
 
+
+# ==========================================
+# DISPLAY RESULTS
+# ==========================================
+
 print()
-print("Model Performance")
-print("-------------------------")
-print("MAE:", mae)
-print("MSE:", mse)
-print("RMSE:", rmse)
-print("R2 Score:", r2)
+print("==========================================")
+print("MODEL TRAINING COMPLETED")
+print("==========================================")
+
+print("Training samples:", len(X_train))
+print("Testing samples:", len(X_test))
+
+print()
+print("MAE:", round(mae, 2))
+print("MSE:", round(mse, 2))
+print("RMSE:", round(rmse, 2))
+print("R2 Score:", round(r2, 2))
 
 
 # ==========================================
-# 10. SAVE MODEL
+# FEATURE IMPORTANCE
+# ==========================================
+
+print()
+print("Feature Importance:")
+print("------------------------------------------")
+
+for feature, importance in zip(
+    X.columns,
+    model.feature_importances_
+):
+    print(
+        feature,
+        ":",
+        round(importance, 3)
+    )
+
+
+# ==========================================
+# SAVE MODEL
 # ==========================================
 
 os.makedirs(
@@ -184,13 +200,14 @@ os.makedirs(
     exist_ok=True
 )
 
-model_path = "models/waste_prediction_model.pkl"
+model_file = "models/waste_prediction_model.pkl"
 
 joblib.dump(
     model,
-    model_path
+    model_file
 )
 
 print()
-print("Model saved successfully!")
-print("Saved to:", model_path) 
+print("Model saved successfully.")
+print("File:", model_file)
+
